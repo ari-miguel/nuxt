@@ -154,18 +154,15 @@ const cargarComDinamico = async (componente) => {
   cargando.value = true
   await selectedItems()
   
-  return new Promise((resolve)=>{
-    
-    setTimeout(() => {
-      cargando.value = false
-      utilities.value = true
-      resolve(vista.value = componente)
+  setTimeout(() => {
+    cargando.value = false
+    utilities.value = true
+    vista.value = componente
       
   }, 500);
 
-})
-
 }
+
 
 const searching = async()=>{
   search.value = !search.value

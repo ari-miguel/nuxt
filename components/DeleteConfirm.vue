@@ -18,7 +18,7 @@
        
             </v-card-text>
             <v-card-actions class="justify-end">
-                <v-btn variant="tonal" color="red" @click ="deleteUser" size="x-small"
+                <v-btn type="button" variant="tonal" color="red" @click ="deleteUser" size="x-small"
                 >Eliminar
                 <v-icon end icon="mdi-delete"></v-icon>
                 </v-btn

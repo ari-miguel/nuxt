@@ -11,12 +11,18 @@
       </v-col>
       <v-col lg="4" md="12" sm="12">
         <NewActionsComponent />
+        
       </v-col>
       
       <v-divider color="warning"></v-divider>
     </v-row>
   </div>
-  </v-container>
+  
+  
+
+  
+
+</v-container>
 
 </template>
 
