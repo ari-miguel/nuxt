@@ -159,7 +159,7 @@ const cargarComDinamico = async (componente) => {
     utilities.value = true
     vista.value = componente
       
-  }, 500);
+  }, 200);
 
 }
 
