@@ -1,11 +1,11 @@
 <template>
   <v-container>
-    <v-card color="info" max-width="300">
+    <v-card color="info" max-width="250">
       <div class="d-flex flex-no-wrap justify-space-between">
         <div>
-          <v-card-title class="text-h5"> Nuevos </v-card-title>
+          <v-card-title class="text-subtitle-1"> Nuevos </v-card-title>
 
-          <v-card-subtitle>{{ fecha }}</v-card-subtitle>
+          <!-- <v-card-subtitle>{{ fecha }}</v-card-subtitle> -->
 
           <v-card-actions>
             <ModalActions :modal="modal" />
@@ -15,8 +15,8 @@
         <div class="text-center pa-2">
     <v-progress-circular
       rotate="360"
-      size="100"
-      width="15"
+      size="50"
+      width="10"
       :model-value="actualizarValor"
       color="warning"
     >

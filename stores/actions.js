@@ -51,6 +51,10 @@ const updateUser = async (item,snackbar,mensaje,dialog)=>{
     
     
 }
+
+const getDatos = ()=>{
+  return updateList.value.length + deleteList.value.length + newsList.value.length
+}
   
-    return { createUser,deleteUser,updateUser,updateList,deleteList,newsList}
+    return { createUser,deleteUser,updateUser,getDatos,updateList,deleteList,newsList}
   })

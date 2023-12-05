@@ -2,15 +2,15 @@
     <v-container>
         <v-card
     color="red"
-    max-width="300"
+    max-width="250"
     >
     <div class="d-flex flex-no-wrap justify-space-between">
       <div>
-        <v-card-title class="text-h5">
+        <v-card-title class="text-subtitle-1">
           Eliminaciones
         </v-card-title>
     
-        <v-card-subtitle>{{ fecha }}</v-card-subtitle>
+        <!-- <v-card-subtitle>{{ fecha }}</v-card-subtitle> -->
     
         <v-card-actions>
           <ModalActions :modal="modal"/>

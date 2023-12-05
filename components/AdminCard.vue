@@ -7,7 +7,7 @@
            <v-row align="center" justify="center">
 
                <v-col cols="4 ms-3">
-                   <v-badge color="success" content="+20">
+                   <v-badge color="success" :content="content">
                        <v-avatar size="50">
                            <v-img alt="Avatar" :src="store.image"></v-img>
                        </v-avatar>
@@ -83,13 +83,19 @@
 <script setup>
 
 import { useAuth } from "../stores/auth"
-
+import { useActionStore } from "../stores/actions";
 const store = useAuth()
+const storeActions = useActionStore()
+let content = 0
 
 const cerrarSesion = ()=>{
     store.logout()
     navigateTo("/")
 }
+
+content = computed(()=>{
+    return storeActions.getDatos()
+})
 
 
 

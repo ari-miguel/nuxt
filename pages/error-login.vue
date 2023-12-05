@@ -18,6 +18,7 @@
 
 
 <script>
+const router = useRouter()
 
 setTimeout(() => {
     navigateTo("/")

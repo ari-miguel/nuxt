@@ -8,14 +8,8 @@
     </template>
 
     <template v-slot:default>
-      <v-card color="">
-        <v-card-title>
-          <v-card color="purple-lighten-2">
-            <v-row class="mt-1 justify-center align-center mb-1">
-              <span class="text-h6">Detalle Usuario</span>
-            </v-row>
-          </v-card>
-        </v-card-title>
+      <v-card height="auto">
+        
         <v-card-text>
           <v-container>
             <v-row>
@@ -142,7 +136,7 @@
           
         </v-card-text>
 
-        <v-card-actions class="mb-3 mr-5">
+        <v-card-actions class="mb-1 mr-5">
           <v-spacer></v-spacer>
           <UpdateConfirm :item="item"/>
           <v-btn

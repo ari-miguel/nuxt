@@ -90,7 +90,7 @@ const deleteUser = async()=>{
   const eliminadoModificado = {...eliminado.value,...hora}
   store.deleteList.push(eliminadoModificado)
   storeList.lista.splice(props.index,1) //eliminaria de la lista para simular el delete
-   dialog.value = false
+  dialog.value = false
   
 
   

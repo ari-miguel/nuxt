@@ -6,23 +6,17 @@
         <v-col cols="auto" v-for="item,index in lista" :key="item.id" >
       
       
-        <v-card color="light-green-lighten-5" class="mx-auto" width="300">
+        <v-card color="light-green-lighten-5" class="mx-auto" width="250">
           <div>
             <v-list color="light-green-lighten-5">
               <v-list-item
+              
                 color="primary"
                 :prepend-avatar="item.image"
                 :title="item.firstName + ' ' + item.lastName"
                 :subtitle="item.email"
               >
-                <template v-slot:append>
-                  <v-btn
-                    size="small"
-                    variant="text"
-                    icon="mdi-menu-down"
-                    
-                  ></v-btn>
-                </template>
+                
               </v-list-item>
             </v-list>
 
@@ -61,10 +55,10 @@
           </div>
 
           <div class="pa-4">
-            <v-row justify="end" class="pa-1">
+            <v-row justify="center" class="pa-1">
          
               <UserDetail :item="item"/>
-              <DeleteConfirm :item="item" :index="index" :lista="lista" @modificarLista="modificarLista"/>
+              <DeleteConfirm :item="item" :index="index" :lista="lista"/>
               
             </v-row>
           </div>
