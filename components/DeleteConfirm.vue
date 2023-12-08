@@ -13,12 +13,17 @@
             <v-card-text>
               <div class="text-subtitle-3 pa-4 text-center">
                 <v-icon icon="mdi-alert-circle" color="red"></v-icon>
-                <p class="text-error">Desea eliminar el usuario {{ item.firstName }} {{ item.lastName }}</p>
+                <p class="text-error">Desea eliminar el usuario {{ item.firstName }} {{ item.lastName }}?</p>
               </div>
+
+              <div v-show="eliminado.firstName">{{ mensaje }}</div>
+           
+
+         
        
             </v-card-text>
             <v-card-actions class="justify-end">
-                <v-btn type="button" variant="tonal" color="red" @click ="deleteUser" size="x-small"
+                <v-btn variant="tonal" color="red" @click ="deleteUser" size="x-small"
                 >Eliminar
                 <v-icon end icon="mdi-delete"></v-icon>
                 </v-btn
@@ -28,17 +33,23 @@
                 <v-icon end icon="mdi-cancel"></v-icon>
                 </v-btn
               >
+
+       
             </v-card-actions>
+
+      
       
           </v-card>
+         
         
         </template>
+      
       </v-dialog>
     </div>
 
 
     <div>
-        <v-snackbar v-model="snackbar" color="red">
+        <v-snackbar v-model="snackbar" color="#F44336">
             {{ mensaje }}
 
             <template v-slot:actions>
@@ -48,13 +59,14 @@
                 </v-btn>
             </template>
         </v-snackbar>
-    </div>
+      </div>
 
     
 
+    
+    
 
-  
-  
+
 </template>
 
 
@@ -63,39 +75,38 @@
 import {useListUsersStore} from "../stores/listUsers"
 import {useActionStore} from "../stores/actions"
 
+
 const store = useActionStore()
 const storeList = useListUsersStore()
 
 const props = defineProps({
     item:Object,
-    lista:Array,
-    index:Number
+    index:Number,
+    
 })
 
-const tiempo = Date.now();
-const hoy = new Date(tiempo);
-const mensaje = ref("")
-const snackbar = ref(false)
-const  dialog = ref(false)
+
+let mensaje = ref("")
+let snackbar = ref(false)
+let  dialog = ref(false)
 const eliminado = ref({})
+let color = "red"
 
 
 const deleteUser = async()=>{
   
-  eliminado.value  = await store.deleteUser(props.item.id)
-  
-  mensaje.value = `Usuario eliminado: ${eliminado.value.id} ${eliminado.value.firstName} ${eliminado.value.lastName}`
-  snackbar.value = true
-  const hora = {"hora":hoy.getHours(),"minutos":hoy.getMinutes()}
+  let eliminado = await store.deleteUser(props.item.id,snackbar,mensaje,dialog)
+  const hora = useTimeNow()
   const eliminadoModificado = {...eliminado.value,...hora}
   store.deleteList.push(eliminadoModificado)
-  storeList.lista.splice(props.index,1) //eliminaria de la lista para simular el delete
-  dialog.value = false
+  setTimeout(() => {
+    storeList.lista.splice(props.index,1) //eliminaria de la lista para simular el delete
+  }, 2000);
   
-
   
-
+  
 }
+
 
 
 </script>

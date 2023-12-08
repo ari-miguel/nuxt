@@ -36,25 +36,24 @@
     </div>
 
     <div>
-        <v-snackbar v-model="snackbar" color="warning">
+        <v-snackbar v-model="snackbar" color="info">
             {{ mensaje }}
 
             <template v-slot:actions>
-                <v-btn color="pink" variant="text" @click="snackbar = false">
+                <v-btn color="white" variant="tonal" @click="snackbar = false">
                     Close
+                    
                 </v-btn>
             </template>
         </v-snackbar>
     </div>
 
-
-  
-  
 </template>
 
 
 
 <script setup>
+
 import {useActionStore} from "../stores/actions"
 import {useAdminStore} from "../stores/admin"
 
@@ -66,21 +65,24 @@ const props = defineProps({
     
 })
 
-const tiempo = Date.now();
-const hoy = new Date(tiempo);
-
 let mensaje = ref("")
 let snackbar = ref(false)
 let dialog = ref(false)
+let color = "info"
 
 const updateUser = async()=>{
 
   await storeAction.updateUser(props.item,snackbar,mensaje,dialog)
-  
-  const hora = {"hora":hoy.getHours(),"minutos":hoy.getMinutes()}
+  const hora = useTimeNow()
   const actualizadoModificado = {...props.item,...hora}
   storeAdmin.admin.updates.push(actualizadoModificado)
   
   
 }
+
+const cambiarSnackBar = ()=>{
+  snackbar.value = false
+  return snackbar.value
+}
+
 </script>

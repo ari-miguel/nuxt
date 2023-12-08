@@ -31,16 +31,22 @@ export const useActionStore = defineStore('actions', () => {
 
 }
 
-const deleteUser = async(id)=>{
-  let res = ""
+const deleteUser = async(id,snackbar,mensaje,dialog)=>{
+  
   try{
   let eliminado = await fetch(`https://dummyjson.com/users/${id}` , {
   method: 'DELETE',
 })
-  res = await eliminado.json()
+  let res = await eliminado.json()
+  snackbar.value = true
+  mensaje.value = `Usuario eliminado: ${res.id} ${res.firstName} ${res.lastName}`
+  dialog.value = false
   return res
+  
 }
 catch(err){
+  
+  console.log(err)
   return err 
 }
 

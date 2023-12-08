@@ -58,7 +58,7 @@
             <v-row justify="center" class="pa-1">
          
               <UserDetail :item="item"/>
-              <DeleteConfirm :item="item" :index="index" :lista="lista"/>
+              <DeleteConfirm :item="item" :index="index"/>
               
             </v-row>
           </div>
