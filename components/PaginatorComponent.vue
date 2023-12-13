@@ -33,7 +33,7 @@
       variant="plain"
       color="success"
       base-color="success"
-      @update:model-value="selectedItems"
+      @update:model-value="store.selectedItems(contador)"
       
       
       
@@ -47,19 +47,19 @@
         variant="text"
         icon="mdi-arrow-left"
         color="success"
-        @click="atras"
-        :disabled="desactivarBtnPrev"
+        @click="store.atras"
+        :disabled="store.desactivarBtnPrev"
       ></v-btn>
 
-      <p class="text-subtitle-1" style="color: #66BB6A;">{{ paginaActual }}/{{ totalPaginas }}</p>
+      <p class="text-subtitle-1" style="color: #66BB6A;">{{ store.paginaActual }}/{{ store.totalPaginas }}</p>
 
         <v-btn
         class="ma-2"
         variant="text"
         icon="mdi-arrow-right"
         color="success"
-        @click="siguiente"
-        :disabled="desactivarBtnSiguiente"
+        @click="store.siguiente"
+        :disabled="store.desactivarBtnSiguiente"
       ></v-btn>
           
         </v-row>
@@ -123,24 +123,13 @@ store.allUsers()
 
 let utilities = ref(false)
 
-
 let cargando = ref(false)
 
 let search = ref(false)
 
-//paginador
-
 let contador = ref(3)
-let siguienteActivo = true
-let prevActivo = false
-let items =[3,6,9]
-let limit = ref(0)
-let skip = ref(0)
-let total = ref(0)
-let paginaActual = ref(1)
-let totalPaginas = ref(1)
 
-//paginador
+let items =[3,6,9]
 
 const listView = defineAsyncComponent(() => import("@/components/UsersList"));
 const cardView = defineAsyncComponent(() => import("@/components/UsersCard"));
@@ -152,7 +141,8 @@ const vista = shallowRef(null);
 const cargarComDinamico = async (componente) => {
   vista.value = null
   cargando.value = true
-  await selectedItems()
+  await store.selectedItems(contador.value)
+  
   
   setTimeout(() => {
     cargando.value = false
@@ -169,61 +159,12 @@ const searching = async()=>{
   
 }
 
-
-
-
-const selectedItems = async()=>{
-  skip.value = 0
-  paginaActual.value = 1
-  limit.value = contador.value
-  await store.paginarLista(limit.value,skip.value)
-  
-  total.value = store.total
-  totalPaginas.value = Math.ceil(total.value/contador.value);
-  
-  
-}
-
-const siguiente = async()=>{
-  limit.value = contador.value
-  skip.value += limit.value
-  await store.paginarLista(limit.value,skip.value)
-  paginaActual.value++
-  
-
-  }
-  
-
-
-const atras = async()=>{
-
-  limit.value = contador.value
-  skip.value -= limit.value
-  await store.paginarLista(limit.value,skip.value)
-  paginaActual.value--
-  
-}
-
-
-
-const desactivarBtnSiguiente = computed(()=>{
-  if(paginaActual.value >= totalPaginas.value){
-    siguienteActivo = true
-    return siguienteActivo
-  }
-})
-
-const desactivarBtnPrev = computed(()=>{
-  if(paginaActual.value == 1){
-    prevActivo = true
-    return prevActivo
-  }
-})
-
 const modificar = (valor)=>{
   store.lista = valor
 
 }
+
+
 
 
 

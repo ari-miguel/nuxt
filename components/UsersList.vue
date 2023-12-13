@@ -34,7 +34,7 @@
     
           <template v-slot:append>
             <UserDetail :item="item"/>
-            <DeleteConfirm :item="item" :index="index"  :lista="lista"/>
+            <DeleteConfirm :item="item" :index="index"/>
           </template>
           <v-divider color="warning"></v-divider>
         </v-list-item>
