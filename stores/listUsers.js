@@ -25,6 +25,7 @@ export const useListUsersStore = defineStore('listusers', () => {
 
     const {data} = await useFetch(`https://dummyjson.com/users?limit=${limit}&skip=${skip}`)
     lista.value = await data.value.users
+    return lista.value
     
       
   }
@@ -84,5 +85,5 @@ export const useListUsersStore = defineStore('listusers', () => {
 
 
   
-    return { lista,total,totalPaginas,paginaActual,searchList,siguienteActivo,prevActivo, allUsers,paginarLista,search,resetSearchList,selectedItems,siguiente,atras,desactivarBtnSiguiente,desactivarBtnPrev }
+  return { lista,total,totalPaginas,paginaActual,searchList,siguienteActivo,prevActivo, allUsers,paginarLista,search,resetSearchList,selectedItems,siguiente,atras,desactivarBtnSiguiente,desactivarBtnPrev }
   })

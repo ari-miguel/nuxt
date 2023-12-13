@@ -67,10 +67,11 @@ const buscar = async () => {
 
 const reset = async () => {
   
-  await store.resetSearchList(3,0)
+  store.searchList = await store.paginarLista(3,0)
   slug.value = ""
   props.searching()
-  emit("modificar",store.searchList)
+  emit("modificar", store.searchList);
+  
   
   
 }
