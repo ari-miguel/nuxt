@@ -16,7 +16,7 @@
                 <p class="text-error">Desea eliminar el usuario {{ item.firstName }} {{ item.lastName }}?</p>
               </div>
 
-              <div v-show="eliminado.firstName">{{ mensaje }}</div>
+              
            
 
          
@@ -89,16 +89,17 @@ const props = defineProps({
 let mensaje = ref("")
 let snackbar = ref(false)
 let  dialog = ref(false)
-const eliminado = ref({})
-let color = "red"
+
+
 
 
 const deleteUser = async()=>{
   
   let eliminado = await store.deleteUser(props.item.id,snackbar,mensaje,dialog)
   const hora = useTimeNow()
-  const eliminadoModificado = {...eliminado.value,...hora}
+  const eliminadoModificado = {...eliminado,...hora}
   store.deleteList.push(eliminadoModificado)
+  
   setTimeout(() => {
     storeList.lista.splice(props.index,1) //eliminaria de la lista para simular el delete
   }, 2000);
