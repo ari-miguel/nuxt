@@ -2,8 +2,8 @@
    <v-container>
    <div>
         
-      <v-row justify="center">
-        <v-col cols="auto" v-for="item,index in lista" :key="item.id" >
+      <v-row justify-sm-start>
+        <v-col cols="12" sm="6" md="4" v-for="item,index in lista" :key="item.id" >
       
       
         <v-card color="light-green-lighten-5" class="mx-auto" width="250">
@@ -64,7 +64,7 @@
           </div>
           </div>
         </v-card>
-      
+        
     </v-col>
     </v-row>
   </div>

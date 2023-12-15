@@ -1,15 +1,17 @@
 <template>
-  <v-container>
-    <div style="width:fit-content;" class="mx-auto">
-    <v-row no-gutters justify="center" justify-sm="center">
-      <v-col lg="4" md="6" sm="12">
+  
+    <v-container>
+      
+      
+    <v-row justify="center" justify-sm-start>
+      <v-col cols="12" sm="6" md="4" lg="3">
         <UpdateActionsComponent />
       </v-col>
 
-      <v-col lg="4" md="6" sm="12">
+      <v-col cols="12" sm="6" md="4" lg="3" >
         <DeleteActionsComponent />
       </v-col>
-      <v-col lg="4" md="12" sm="12">
+      <v-col cols="12" sm="6" md="4" lg="3">
         <NewActionsComponent />
         
       </v-col>
@@ -18,14 +20,10 @@
       
       <v-divider color="warning"></v-divider>
     </v-row>
-  </div>
   
   
-
+  </v-container>
   
-
-</v-container>
-
 </template>
 
 
