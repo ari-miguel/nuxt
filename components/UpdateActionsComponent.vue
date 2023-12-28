@@ -1,5 +1,5 @@
 <template>
-<v-container>
+<v-container id="container">
     <v-card
 color="success"
 max-width="250"
@@ -58,3 +58,16 @@ const actualizarValor = computed(()=>{
 
 
 </script>
+
+<style scoped>
+
+@media (max-width: 400px) {
+  #container {
+    max-width: 250px;
+  }
+}
+
+
+
+
+</style>

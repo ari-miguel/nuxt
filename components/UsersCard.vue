@@ -1,8 +1,8 @@
 <template>
    <v-container>
-   <div>
+   <div class="mx-auto">
         
-      <v-row justify-sm-start>
+      <v-row justify-md="center" no-gutters>
         <v-col cols="12" sm="6" md="4" v-for="item,index in lista" :key="item.id" >
       
       
@@ -86,3 +86,7 @@ const props = defineProps({
 
 
 </script>
+
+<style scoped>
+
+</style>

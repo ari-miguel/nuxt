@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container id="container">
     <v-card color="info" max-width="250">
       <div class="d-flex flex-no-wrap justify-space-between">
         <div>
@@ -59,3 +59,15 @@ const modal = ref({
   firstIcon: "mdi-account-plus",
 });
 </script>
+
+<style scoped>
+
+@media (max-width: 400px) {
+  #container {
+    max-width: 250px;
+  }
+}
+
+
+
+</style>

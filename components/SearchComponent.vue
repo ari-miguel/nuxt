@@ -32,6 +32,7 @@ const store = useListUsersStore();
 let slug = ref("");
 let mensaje = ref("")
 let buscando = ref(false)
+
 const props = defineProps({
   searching:Function
 })
